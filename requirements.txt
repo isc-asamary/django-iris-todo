@@ -1,0 +1,4 @@
+intersystems-irispython~=3.2.0
+Django~=4.0.2
+django-iris~=0.1.5
+gunicorn~=20.1.0

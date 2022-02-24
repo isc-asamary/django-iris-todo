@@ -1,0 +1,13 @@
+version: '3'
+services:
+  iris:
+    build: .
+    ports:
+      - 1972
+      - 52773
+      - 8000:8000
+    volumes:
+      - ./:/home/irisowner/django-todo/
+    command: 
+      - -a
+      - iris session iris -U%SYS '##class(Security.Users).UnExpireUserPasswords("*")'
