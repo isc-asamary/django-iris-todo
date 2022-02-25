@@ -1,4 +1,4 @@
-intersystems-irispython~=3.2.0
+https://raw.githubusercontent.com/intersystems-community/iris-driver-distribution/main/intersystems_irispython-3.2.0-py3-none-any.whl
 Django~=4.0.2
 django-iris~=0.1.5
 gunicorn~=20.1.0
