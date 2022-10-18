@@ -82,6 +82,7 @@ DATABASES = {
         'PORT': 1972,
         'USER': 'django',
         'PASSWORD': 'django',
+        'TIMEOUT': 60,
     }
 }
 
