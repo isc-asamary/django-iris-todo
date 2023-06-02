@@ -1,0 +1,25 @@
+
+jdbcConnectionString: jdbc:IRIS://127.0.0.1:1972/USER
+image:
+  registry: amirsamary
+  repository: django-iris-todo
+
+cloudProvider: "dev"
+cloudProviderRegion: "dev-region"
+compute:
+  nodeTypeSelector: ""
+  cpu: 500m
+  memory: 512Mi
+
+irisUserName: ""
+irisPassword: "" 
+
+loadBalancer:
+  enabled: true
+  hostname: "localhost"
+  port: "8000"
+
+# These are the secret fields needed to successfully deploy.
+# They will be injected by the control plane:
+# requiredSecrets:
+#   intersystemsContainerRegistrySecret: ""

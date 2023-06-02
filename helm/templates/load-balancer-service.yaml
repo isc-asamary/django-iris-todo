@@ -1,0 +1,19 @@
+{{- if (eq (toString .Values.loadBalancer.enabled) "true") }}
+apiVersion: v1
+kind: Service
+metadata:
+  name: django-iris-lb
+  namespace: {{ .Release.Name }}
+  annotations: 
+    sds/load-ports-as-separate-services: "true"
+spec:
+  selector:
+    app: django-iris-todo-pod
+  ports:
+    {{- if eq (toString .Values.loadBalancer.enabled) "true" }}
+    - name: django-port
+      port: {{ .Values.loadBalancer.port }}
+      targetPort: 8000
+    {{- end }}
+  type: LoadBalancer
+{{- end }}

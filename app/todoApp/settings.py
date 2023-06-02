@@ -74,14 +74,29 @@ WSGI_APPLICATION = 'todoApp.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
+#
+# Expected format of IRIS_JDBC_URL: 
+# jdbc:IRIS://iris:1972/USER
+#
+jdbcConnectionString = os.environ.get('IRIS_JDBC_URL')
+jdbcPieces = jdbcConnectionString.split("/")
+irisNamespace = jdbcPieces[3]
+
+hostPieces = jdbcPieces[2].split(":")
+irisHost=hostPieces[0]
+irisPort=int(hostPieces[1])
+
+irisUsername = os.environ.get('IRIS_USERNAME')
+irisPassword = os.environ.get('IRIS_PASSWORD')
+
 DATABASES = {
     'default': {
         'ENGINE': 'django_iris',
-        'NAME': 'USER',
-        'HOST': 'localhost',
-        'PORT': 1972,
-        'USER': 'django',
-        'PASSWORD': 'django',
+        'NAME': irisNamespace,
+        'HOST': irisHost,
+        'PORT': irisPort,
+        'USER': irisUsername,
+        'PASSWORD': irisPassword,
         'TIMEOUT': 60,
     }
 }

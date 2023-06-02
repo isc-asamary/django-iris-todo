@@ -1,0 +1,50 @@
+apiVersion: v1
+sections:
+- label: IRIS Database Credentials
+  fields:
+  - field: irisUserName
+    type: string
+    label: IRIS Username
+    help: "IRIS User that django should use to authenticate."
+    value: "SuperUser"
+  - field: irisPassword
+    type: passwordBase64
+    label: IRIS Password
+    help: Password for connecting to IRIS Database
+    editable: "false"
+    sidebarVisible: "false"
+EULSA: https://www.intersystems.com/EULSA-Docs/InterSystems_IRIS_Cloud_End_User-8_14_19.pdf 
+endpoints:
+- title: TODO App
+  group: Developer
+  description: Open the TODO App
+  type: browsing
+  url: http://{externalService.host}:{externalService.port}/todos/
+  contexts:
+  - manage
+  - portal
+  visibility: external
+  presentation: link
+  externalService: django-port
+
+compute:
+  computeSpecs:
+  - name: compute
+    label: Size of Django Compute Node
+    categoryFilter: CO,MO,GP
+    minCPU: 2
+    minRAM: 4
+    nodeSelectorField: compute.nodeTypeSelector
+    cpuRequestField: compute.cpu
+    memoryRequestField: compute.memory
+    help: Specifies how many cores and how much memory your Django application server will be given
+
+externalServicesDeclarations:
+ - name: django-port
+   type: loadBalancer
+   hostnameChartField: loadBalancer.hostname
+   loadBalancerPortChartField: loadBalancer.port
+   enabled: false
+   enabledChartField: loadBalancer.enabled
+   label: TODO Application Access
+   description: Port through which you can access the TODO App
