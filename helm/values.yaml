@@ -19,6 +19,9 @@ loadBalancer:
   hostname: "localhost"
   port: "8000"
 
+skaffold:
+  enabled: false
+  
 # These are the secret fields needed to successfully deploy.
 # They will be injected by the control plane:
 # requiredSecrets:
