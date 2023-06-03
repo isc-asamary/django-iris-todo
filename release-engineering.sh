@@ -41,17 +41,17 @@ function create_new_release() {
 
     echo $RELEASE_VERSION_NUMBER > VERSION
 
-    # if [[ $OSTYPE =~ [darwin*] ]]; then
+    if [[ $OSTYPE =~ [darwin*] ]]; then
     #     # Updating Angular application version
     #     sed -E -i '' "s;([ ]*\"version\": *)\"[0-9][0-9.]*\";\1\"$1\";g" ./frontend/image/app/package.json
-    #     sed -E -i '' "s;(version: [0-9.]+);version: $INPUT_STRING;" ./SDS/helm/Chart.yaml
-    #     sed -E -i '' "s;(appVersion: *)\"[0-9][0-9.]*\";\1\"$INPUT_STRING\";g" ./SDS/helm/Chart.yaml
-    # else
+        sed -E -i '' "s;(version: [0-9.]+);version: $INPUT_STRING;" ./helm/Chart.yaml
+        sed -E -i '' "s;(appVersion: *)\"?[0-9][0-9.]*\"?;\1\"$INPUT_STRING\";g" ./helm/Chart.yaml
+    else
     #     # Updating Angular application version
     #     sed -E -i "s;([ ]*\"version\": *)\"[0-9][0-9.]*\";\1\"$1\";g" ./frontend/image/app/package.json
-    #     sed -E -i "s;(version: [0-9.]+);version: $INPUT_STRING;" ./SDS/helm/Chart.yaml
-    #     sed -E -i "s;(appVersion: *)\"[0-9][0-9.]*\";\1\"$INPUT_STRING\";g" ./SDS/helm/Chart.yaml
-    # fi
+        sed -E -i "s;(version: [0-9.]+);version: $INPUT_STRING;" ./helm/Chart.yaml
+        sed -E -i "s;(appVersion: *)\"?[0-9][0-9.]*\"?;\1\"$INPUT_STRING\";g" ./helm/Chart.yaml
+    fi
 
     handle_change_log $RELEASE_TAG $RELEASE_TAG
 
