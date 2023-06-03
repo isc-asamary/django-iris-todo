@@ -32,12 +32,12 @@ spec:
 
         resources:
           requests:
-            cpu: {{ .Values.compute.main.cpu }}
-            memory: {{ .Values.compute.main.memory }}
+            cpu: {{ .Values.compute.cpu }}
+            memory: {{ .Values.compute.memory }}
 
-      {{- if .Values.compute.main.nodeTypeSelector }}
+      {{- if .Values.compute.nodeTypeSelector }}
       nodeSelector:
-        sds/node-type: {{ .Values.compute.main.nodeTypeSelector }}
+        sds/node-type: {{ .Values.compute.nodeTypeSelector }}
       {{- end }}
       tolerations:
       - key: sds/select-worker
