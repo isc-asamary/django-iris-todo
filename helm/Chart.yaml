@@ -23,6 +23,8 @@ version: 0.5.0
 # It is recommended to use it with quotes.
 appVersion: "0.5.0"
 
+icon: icon.jpeg
+
 annotations:
   intersystems/sds-title: Simple TODO App built with Django
   intersystems/sds-organization: InterSystems Corporation
