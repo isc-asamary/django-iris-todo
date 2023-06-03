@@ -13,10 +13,6 @@ spec:
       labels: 
         app: django-iris-todo-pod
     spec: 
-    #   imagePullSecrets:
-    #   {{- if .Values.requiredSecrets.intersystemsContainerRegistrySecret }}    
-    #   - name: {{ .Values.requiredSecrets.intersystemsContainerRegistrySecret }}
-    #   {{- end }}
 
       containers:
       - name: django-iris-todo-container

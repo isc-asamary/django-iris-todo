@@ -8,7 +8,7 @@ sections:
     help: "IRIS User that django should use to authenticate."
     value: "SuperUser"
   - field: irisPassword
-    type: webgatewaypassword
+    type: password
     label: IRIS Password
     help: Password for connecting to IRIS Database
     editable: "false"
