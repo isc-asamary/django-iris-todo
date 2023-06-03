@@ -8,12 +8,14 @@ sections:
     help: "IRIS User that django should use to authenticate."
     value: "SuperUser"
   - field: irisPassword
-    type: passwordBase64
+    type: webgatewaypassword
     label: IRIS Password
     help: Password for connecting to IRIS Database
     editable: "false"
     sidebarVisible: "false"
+
 EULSA: https://www.intersystems.com/EULSA-Docs/InterSystems_IRIS_Cloud_End_User-8_14_19.pdf 
+
 endpoints:
 - title: TODO App
   group: Developer
@@ -26,6 +28,13 @@ endpoints:
   visibility: external
   presentation: link
   externalService: django-port
+
+endpointDependencies:
+ - dependency: jdbc
+   endpointType: intersystems-iris-jdbc
+   reason: This service will store its information in an InterSystems IRIS database.
+   chartField: jdbcConnectionString
+   optional: false
 
 compute:
   computeSpecs:
